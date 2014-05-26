@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localhost/mean-prod',
+    db: process.env.MONGOHQ_URL,
     app: {
         name: 'MEAN - A Modern Stack - Production'
     },
     facebook: {
-        clientID: 'APP_ID',
-        clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/auth/facebook/callback'
+        clientID: '620640598027615',
+        clientSecret: '4b1af56e3c9282e115437b6759153546',
+        callbackURL: process.env.HOST
     },
     twitter: {
         clientID: 'CONSUMER_KEY',
