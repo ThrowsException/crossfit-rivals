@@ -18,11 +18,17 @@ Workouts.register(function(app, auth, database) {
 
     //We are adding a link to the main menu for all authenticated users
     Workouts.menus.add({
-        title: 'workouts example page',
-        link: 'workouts example page',
+        title: 'Create a WOD',
+        link: 'create a wod',
         roles: ['authenticated'],
         menu: 'main'
     });
+    // Workouts.menus.add({
+    //     title: 'View WODs',
+    //     link: 'view a wod',
+    //     roles: ['authenticated'],
+    //     menu: 'main'
+    // });
 
     /**
     //Uncomment to use. Requires meanio@0.3.7 or above

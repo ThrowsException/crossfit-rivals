@@ -1,11 +1,15 @@
 'use strict';
 
+var workouts = require('../controllers/workouts');
+
 // The Package is past automatically as first parameter
 module.exports = function(Workouts, app, auth, database) {
 
     app.get('/workouts/example/anyone', function(req, res, next) {
         res.send('Anyone can access this');
     });
+
+    app.post('/workouts', workouts.create);
 
     app.get('/workouts/example/auth', auth.requiresLogin, function(req, res, next) {
         res.send('Only authenticated users can access this');
