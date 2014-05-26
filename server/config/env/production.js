@@ -8,7 +8,7 @@ module.exports = {
     facebook: {
         clientID: '620640598027615',
         clientSecret: '4b1af56e3c9282e115437b6759153546',
-        callbackURL: process.env.HOST + '/auth/facebook/callback'
+        callbackURL: 'http://crossfit-rivals.herokuapp.com/auth/facebook/callback'
     },
     twitter: {
         clientID: 'CONSUMER_KEY',
