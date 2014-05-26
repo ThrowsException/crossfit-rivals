@@ -11,10 +11,15 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
            	Workouts.save({}, {title: this.title, data: $scope.sections}, function(response) {
                 $location.path('/');
         	}, function(response) {
-            	console.log(response)
+            	
             });
         };
 
+        $scope.find = function() {
+            Workouts.query(function(workouts) {
+                $scope.workouts = workouts;
+            });
+        };
 
         $scope.sections = [];
 

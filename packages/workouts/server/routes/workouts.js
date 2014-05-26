@@ -9,7 +9,9 @@ module.exports = function(Workouts, app, auth, database) {
         res.send('Anyone can access this');
     });
 
-    app.post('/workouts', workouts.create);
+    app.route('/workouts')
+        .get(workouts.all)
+        .post(workouts.create);
 
     app.get('/workouts/example/auth', auth.requiresLogin, function(req, res, next) {
         res.send('Only authenticated users can access this');

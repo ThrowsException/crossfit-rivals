@@ -27,3 +27,15 @@ exports.create = function(req, res) {
         }
     });
 };
+
+exports.all = function(req, res) {
+    Wod.find().sort('-created').populate('user', 'name username').exec(function(err, wods) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            res.jsonp(wods);
+        }
+    });
+};
