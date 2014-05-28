@@ -6,9 +6,9 @@ module.exports = {
         name: 'MEAN - A Modern Stack - Production'
     },
     facebook: {
-        clientID: '620640598027615',
-        clientSecret: '4b1af56e3c9282e115437b6759153546',
-        callbackURL: 'https://www.crossfitrivals.com/auth/facebook/callback'
+        clientID: 'APP_ID',
+        clientSecret: 'APP_SECRET',
+        callbackURL: 'http://localhost:3000/auth/facebook/callback'
     },
     twitter: {
         clientID: 'CONSUMER_KEY',
