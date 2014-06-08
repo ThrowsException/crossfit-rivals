@@ -13,6 +13,9 @@ module.exports = function(Workouts, app, auth, database) {
         .get(workouts.all)
         .post(workouts.create);
 
+    app.route('/workouts/:userId')
+        .get(workouts.owned);
+
     app.get('/workouts/example/auth', auth.requiresLogin, function(req, res, next) {
         res.send('Only authenticated users can access this');
     });
