@@ -12,7 +12,6 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 
     var wod = new Wod(req.body);
-	console.log(JSON.stringify(wod));
     wod.user = req.user;
 
     wod.save(function(err) {

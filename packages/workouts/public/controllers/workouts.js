@@ -8,7 +8,7 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
         };
 
         $scope.create = function() {
-           	Workouts.save({}, {title: this.title, data: $scope.sections}, function(response) {
+           	Workouts.save({}, {title: this.title, wod: $scope.sections, notes: this.notes}, function(response) {
                 $location.path('/');
         	}, function(response) {
             	
