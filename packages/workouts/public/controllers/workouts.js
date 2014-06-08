@@ -21,6 +21,12 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
             });
         };
 
+        $scope.owned = function() {
+            Workouts.query({userId: $scope.global.user._id}, function(workouts) {
+                $scope.workouts = workouts;
+            });
+        };
+
         $scope.sections = [];
 
         $scope.addSection = function() {

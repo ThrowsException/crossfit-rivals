@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Wod = mongoose.model('Wod'),
-    _ = require('lodash');
+    Wod = mongoose.model('Wod');
 
 /**
  * Create an article
@@ -24,6 +23,18 @@ exports.create = function(req, res) {
             });
         } else {
             res.jsonp(wod);
+        }
+    });
+};
+
+exports.owned = function(req, res) {
+    Wod.find({user: req.user}).sort('-created').populate('user', 'name username').exec(function(err, wods) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            res.jsonp(wods);
         }
     });
 };

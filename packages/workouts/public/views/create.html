@@ -16,6 +16,7 @@
             <div class="form-group">
                 <div class="col-md-6">
                     <select ng-model="section.type" class="form-control">
+                        <option value="Rounds">Rounds</option>
                         <option value="AMRAP">AMRAP</option>
                         <option value="For Time">For Time</option>
                         <option value="EMTOM">EMOTM</option>
@@ -24,14 +25,21 @@
                 <button type="button" class="btn btn-primary col-md-3" ng-click="addItem($index)">Add Item</button>
                 <button type="button" class="btn btn-primary col-md-3" ng-click="remove($index)">Remove Section</button>
             </div>
-            <div class="form-group" data-ng-repeat="item in section.items">
+            <div class="form-group" data-ng-repeat="item in section.items" >
                 <div class="form-group">
-                    <label mean-token="'item-name'" for="{{item.name}}" class="col-md-3 control-label">Name</label>
-                    <div class="col-md-9">
+                    <label mean-token="'item-name'" for="{{item.name}}" class="col-md-1 control-label">Name</label>
+                    <div class="col-md-7">
                         <input type="text" data-ng-model="item.name" id="{{item.name}}{{index}}" placeholder="Name" class="form-control" required></textarea>
+                    </div>
+                    <label mean-token="'item-weight'" for="{{item.weight}}" class="col-md-1 control-label">Weight</label>
+                    <div class="col-md-3">
+                        <input type="text" data-ng-model="item.weight" id="{{item.weight}}{{index}}" placeholder="Optional" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
+        </div>
+         <div class="form-group">
+            <textarea id="notes" class="form-control" data-ng-model="wod.notes" placeholder="Additional Notes" rows="3"></textarea>
         </div>
         <div class="form-group">
             <div class="col-md-offset-3 col-md-9">
