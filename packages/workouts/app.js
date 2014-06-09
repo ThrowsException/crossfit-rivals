@@ -57,6 +57,6 @@ Workouts.register(function(app, auth, database) {
         //you now have the settings object
     });
     */
-
+    Workouts.aggregateAsset('css', 'workouts.css');
     return Workouts;
 });

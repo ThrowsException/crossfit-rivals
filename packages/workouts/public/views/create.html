@@ -2,19 +2,19 @@
         
     <button type="button" class="btn btn-primary form-control" ng-click="addSection()">Add Section</button>
 
-    <form name="wod" class="form-horizontal col-md-6" role="form" data-ng-submit="create()" novalidate>
+    <form name="wod" id="wod-form" class="form-horizontal top-buffer" role="form" data-ng-submit="create()" novalidate>
        <div class="form-group" ng-class="{ 'has-error' : wod.title.$invalid && !wod.title.$pristine }">
        <!-- <div ng-class="form-group has-error"> -->
-            <label mean-token="'item-title'" for="title" class="col-md-3 control-label" >Title</label>
-            <div class="col-md-9">
+            <label mean-token="'item-title'" for="title" class="col-md-1 control-label" >Title</label>
+            <div class="col-md-11">
                 <input type="text" data-ng-model="title" id="title" name="title" placeholder="Title" class="form-control" ng-minlength="3" required></input>
-                 <span ng-show="wod.title.$error.minlength" class="help-block">Username is too short.</span>
+                <span ng-show="wod.title.$error.minlength" class="help-block">Username is too short.</span>
             </div>
-           
         </div>
-        <div class="form-group" data-ng-repeat="section in sections">
+        <div data-ng-repeat="section in sections">
             <div class="form-group">
-                <div class="col-md-6">
+                <label mean-token="'item-type'" for="type" class="col-md-1 control-label">Title</label>
+                <div class="col-md-8">
                     <select ng-model="section.type" class="form-control">
                         <option value="Rounds">Rounds</option>
                         <option value="AMRAP">AMRAP</option>
@@ -22,10 +22,10 @@
                         <option value="EMTOM">EMOTM</option>
                     </select>
                 </div>
-                <button type="button" class="btn btn-primary col-md-3" ng-click="addItem($index)">Add Item</button>
-                <button type="button" class="btn btn-primary col-md-3" ng-click="remove($index)">Remove Section</button>
+                <button type="button" class="btn btn-default" ng-click="addItem($index)">Add Item</button>
+                <button type="button" class="btn btn-default" ng-click="remove($index)">Remove Section</button>
             </div>
-            <div class="form-group" data-ng-repeat="item in section.items" >
+            <div class="col-md-offset-1" data-ng-repeat="item in section.items" >
                 <div class="form-group">
                     <label mean-token="'item-name'" for="{{item.name}}" class="col-md-1 control-label">Name</label>
                     <div class="col-md-7">
@@ -38,11 +38,12 @@
                 </div>
             </div>
         </div>
-         <div class="form-group">
+        <div class="form-group">
+            <label for="notes" class="control-label sr-only">Additional Notes</label>
             <textarea id="notes" class="form-control" data-ng-model="notes" placeholder="Additional Notes" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-3 col-md-9">
+            <div class="col-md-9">
                 <button type="submit" class="btn btn-info" ng-disabled="wod.$invalid">Submit</button>
             </div>
         </div>
