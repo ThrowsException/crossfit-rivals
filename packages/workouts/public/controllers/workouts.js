@@ -35,7 +35,7 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
         };
 
         $scope.owned = function() {
-            Workouts.query({userId: $scope.global.user._id}, function(workouts) {
+            Workouts.query({owned: 'owned', workoutId: $scope.global.user._id}, function(workouts) {
                 $scope.workouts = workouts;
             });
         };

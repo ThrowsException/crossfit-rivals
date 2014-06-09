@@ -16,7 +16,7 @@ module.exports = function(Workouts, app, auth, database) {
     app.route('/workouts/:workoutId')
         .get(workouts.show);
 
-    app.route('/workouts/:userId')
+    app.route('/workouts/owned/:userId')
         .get(workouts.owned);
 
     app.get('/workouts/example/auth', auth.requiresLogin, function(req, res, next) {
