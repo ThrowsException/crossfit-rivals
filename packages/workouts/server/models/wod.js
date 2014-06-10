@@ -20,6 +20,11 @@ var WodSchema = new Schema({
         default: '',
         trim: true
     },
+    notes: {
+        type: String,
+        default: '',
+        trim:true
+    },
     user: {
         type: Schema.ObjectId,
         ref: 'User'

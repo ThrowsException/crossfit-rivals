@@ -40,6 +40,13 @@ angular.module('mean.workouts').config(['$stateProvider',
 	            resolve: {
 	                loggedin: checkLoggedin
 	            }
+        	}).
+        	state('my wods', {
+            url: '/workouts/my_workouts',
+	            templateUrl: 'workouts/views/owned.html',
+	            resolve: {
+	                loggedin: checkLoggedin
+	            }
         	});
     }
 ]);

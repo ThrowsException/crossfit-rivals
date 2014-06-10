@@ -8,7 +8,7 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
         };
 
         $scope.create = function() {
-           	Workouts.save({}, {title: this.title, data: $scope.sections}, function(response) {
+           	Workouts.save({}, {title: this.title, wod: $scope.sections, notes: this.notes}, function(response) {
                 $location.path('/');
         	}, function(response) {
             	
@@ -17,6 +17,12 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
 
         $scope.find = function() {
             Workouts.query(function(workouts) {
+                $scope.workouts = workouts;
+            });
+        };
+
+        $scope.owned = function() {
+            Workouts.query({userId: $scope.global.user._id}, function(workouts) {
                 $scope.workouts = workouts;
             });
         };
