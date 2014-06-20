@@ -13,7 +13,10 @@ module.exports = function(Workouts, app, auth, database) {
         .get(workouts.all)
         .post(workouts.create);
 
-    app.route('/workouts/:userId')
+    app.route('/workouts/:workoutId')
+        .get(workouts.show);
+
+    app.route('/workouts/owned/:userId')
         .get(workouts.owned);
 
     app.get('/workouts/example/auth', auth.requiresLogin, function(req, res, next) {
@@ -32,4 +35,6 @@ module.exports = function(Workouts, app, auth, database) {
             res.send(html);
         });
     });
+
+    app.param('workoutId', workouts.workout);
 };

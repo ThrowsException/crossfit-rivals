@@ -7,6 +7,11 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
             name: 'workouts'
         };
 
+         $scope.hasAuthorization = function(article) {
+            if (!article || !article.user) return false;
+            return $scope.global.isAdmin || article.user._id === $scope.global.user._id;
+        };
+
         $scope.create = function() {
            	Workouts.save({}, {title: this.title, wod: $scope.sections, notes: this.notes}, function(response) {
                 $location.path('/');
@@ -21,8 +26,16 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
             });
         };
 
+        $scope.findOne = function() {
+            Workouts.get({
+                workoutId: $stateParams.workoutId
+            }, function(workout) {
+                $scope.workout = workout;
+            });
+        };
+
         $scope.owned = function() {
-            Workouts.query({userId: $scope.global.user._id}, function(workouts) {
+            Workouts.query({owned: 'owned', workoutId: $scope.global.user._id}, function(workouts) {
                 $scope.workouts = workouts;
             });
         };

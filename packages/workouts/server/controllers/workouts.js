@@ -6,6 +6,19 @@
 var mongoose = require('mongoose'),
     Wod = mongoose.model('Wod');
 
+
+/**
+ * Find workout by id
+ */
+exports.workout = function(req, res, next, id) {
+    Wod.load(id, function(err, workout) {
+        if (err) return next(err);
+        if (!workout) return next(new Error('Failed to load workout ' + id));
+        req.workout = workout;
+        next();
+    });
+};
+
 /**
  * Create an article
  */
@@ -25,6 +38,14 @@ exports.create = function(req, res) {
         }
     });
 };
+
+/**
+ * Show a workout
+ */
+exports.show = function(req, res) {
+    res.jsonp(req.workout);
+};
+
 
 exports.owned = function(req, res) {
     Wod.find({user: req.user}).sort('-created').populate('user', 'name username').exec(function(err, wods) {

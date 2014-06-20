@@ -1,0 +1,29 @@
+<section data-ng-controller="WorkoutsController" data-ng-init="findOne()">
+    <span>{{workout.created | date:'medium'}}</span> /
+    <span>{{workout.user.name}}</span>
+    <h2>{{workout.title}}</h2>
+   <!--  <div data-ng-if="hasAuthorization(workout)">
+        <a class="btn" href="/#!/workouts/{{workout._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove(workout);">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div> -->
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Weight (opt.)</th>
+            </tr>
+        </thead>
+        <tbody data-ng-repeat="data in workout.data">
+            <tr data-ng-repeat="item in data.items">
+                <td>{{item.name}}</td>
+                <td>{{item.weight}}</td>
+            </tr>
+        </tbody>
+    <table>
+    <h3>Notes</h3>
+    <p>{{workout.notes || "No Notes Entered For This WOD"}}</p>
+</section>
