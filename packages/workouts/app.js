@@ -24,7 +24,7 @@ Workouts.register(function(app, auth, database) {
         menu: 'main'
     });
     Workouts.menus.add({
-        title: 'View WODs',
+        title: 'Community WODs',
         link: 'all wods',
         roles: ['authenticated'],
         menu: 'main'

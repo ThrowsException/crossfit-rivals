@@ -40,6 +40,24 @@ exports.create = function(req, res) {
 };
 
 /**
+ * Delete a wod
+ */
+exports.destroy = function(req, res) {
+    var workout = req.workout;
+
+    workout.remove(function(err) {
+        if (err) {
+            return res.send('users/signup', {
+                errors: err.errors,
+                workout: workout
+            });
+        } else {
+            res.jsonp(workout);
+        }
+    });
+};
+
+/**
  * Show a workout
  */
 exports.show = function(req, res) {

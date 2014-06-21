@@ -2,6 +2,14 @@
 
 var workouts = require('../controllers/workouts');
 
+// Article authorization helpers
+var hasAuthorization = function(req, res, next) {
+    if (!req.user.isAdmin && req.wod.user.id !== req.user.id) {
+        return res.send(401, 'User is not authorized');
+    }
+    next();
+};
+
 // The Package is past automatically as first parameter
 module.exports = function(Workouts, app, auth, database) {
 
@@ -14,7 +22,8 @@ module.exports = function(Workouts, app, auth, database) {
         .post(workouts.create);
 
     app.route('/workouts/:workoutId')
-        .get(workouts.show);
+        .get(workouts.show)
+        .delete(auth.requiresLogin, hasAuthorization, workouts.destroy);
 
     app.route('/workouts/owned/:userId')
         .get(workouts.owned);

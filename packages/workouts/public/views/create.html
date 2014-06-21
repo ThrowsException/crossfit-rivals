@@ -23,17 +23,22 @@
                     </select>
                 </div>
                 <button type="button" class="btn btn-default" ng-click="addItem($index)">Add Item</button>
-                <button type="button" class="btn btn-default" ng-click="remove($index)">Remove Section</button>
+                <button type="button" class="btn btn-default" ng-click="removeSection($index)">Remove Section</button>
             </div>
             <div class="col-md-offset-1" data-ng-repeat="item in section.items" >
                 <div class="form-group">
                     <label mean-token="'item-name'" for="{{item.name}}" class="col-md-1 control-label">Name</label>
                     <div class="col-md-7">
-                        <input type="text" data-ng-model="item.name" id="{{item.name}}{{index}}" placeholder="Name" class="form-control" required></textarea>
+                        <input type="text" data-ng-model="item.name" id="{{item.name}}{{index}}" placeholder="Name" class="form-control" required>
                     </div>
                     <label mean-token="'item-weight'" for="{{item.weight}}" class="col-md-1 control-label">Weight</label>
-                    <div class="col-md-3">
-                        <input type="text" data-ng-model="item.weight" id="{{item.weight}}{{index}}" placeholder="Optional" class="form-control"></textarea>
+                    <div class="col-md-2">
+                        <input type="text" data-ng-model="item.weight" id="{{item.weight}}{{index}}" placeholder="Optional" class="form-control">
+                    </div>
+                    <div class="col-md-1">
+                        <a class="btn" ng-click="removeItem($parent.$index, $index);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
                     </div>
                 </div>
             </div>
