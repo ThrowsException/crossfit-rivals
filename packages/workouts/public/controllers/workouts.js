@@ -40,6 +40,22 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
             });
         };
 
+        $scope.remove = function(workout) {
+            if (workout) {
+                workout.$remove();
+
+                for (var i in $scope.workouts) {
+                    if ($scope.workouts[i] === workout) {
+                        $scope.workouts.splice(i, 1);
+                    }
+                }
+            } else {
+                $scope.workouts.$remove(function(response) {
+                    $location.path('workouts');
+                });
+            }
+        };
+
         $scope.sections = [];
 
         $scope.addSection = function() {
@@ -55,8 +71,12 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
             wodSection.items.push({});
         };
 
-        $scope.remove = function(index) {
+        $scope.removeSection = function(index) {
             $scope.sections.splice(index, 1);
+        };
+
+        $scope.removeItem = function(parentIndex, index) {
+            $scope.sections[parentIndex].items.splice(index, 1);
         };
     }
 ]);
