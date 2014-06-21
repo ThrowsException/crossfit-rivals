@@ -1,7 +1,7 @@
 <section data-ng-controller="WorkoutsController" data-ng-init="find()">
-    <ul class="articles unstyled">
+    <ul class="articles list-unstyled">
         <li data-ng-repeat="workout in workouts">
-            <span>{{workout.created | date:'medium'}}</span> 
+            <!-- <span>{{workout.created | date:'medium'}}</span>  -->
             <!-- <span>{{workour.user.name}}</span> -->
             <h2>
                 <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title}}</a>
