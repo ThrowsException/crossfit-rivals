@@ -20,8 +20,10 @@
         </li>
         
         <!-- custom xs links when viewing on mobile-->
-        <li class="visible-xs" ng-class="{active: $uiRoute}"><a>Profile</a></li>
-        <li class="visible-xs" ng-class="{active: $uiRoute}"><a>Logout</a></li>
+        <!-- <li class="visible-xs" ng-class="{active: $uiRoute}" data-ng-show="global.authenticated"><a>Profile</a></li> -->
+        <li data-ng-show="global.authenticated" class="visible-xs" ng-class="{active: $uiRoute}" >
+          <a href="/logout" data-ng-show="global.authenticated">Logout</a>
+        </li>
       </ul>
     </div>
 
@@ -36,7 +38,7 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav nav hidden-xs " data-ng-show="global.authenticated">
+      <ul class="navbar-nav nav hidden-xs" data-ng-show="global.authenticated">
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   {{global.user.name}} <b class="caret"></b>
