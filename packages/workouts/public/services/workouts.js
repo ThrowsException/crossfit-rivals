@@ -8,6 +8,15 @@ angular.module('mean').factory('Workouts', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			completed: {
+				method: 'POST',
+				url: 'completed'
+			},
+			getCompleted: {
+				method: 'GET',
+				url: 'completed',
+				isArray : true
 			}
 		});
 	}

@@ -1,0 +1,18 @@
+<section data-ng-controller="WorkoutsController" data-ng-init="completed()">
+    <ul class="articles list-unstyled">
+        <li data-ng-repeat="workout in workouts">
+            <!-- <span>{{workout.created | date:'medium'}}</span>  -->
+            <!-- <span>{{workour.user.name}}</span> -->
+            <h2>
+                <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title}}</a>
+            </h2>
+                <label>Rx</label>
+                <i ng-show="workout.rx" class="glyphicon glyphicon-ok-circle"></i>
+                <i ng-hide="workout.rx" class="glyphicon glyphicon-ban-circle"></i>
+                <label>Score</label>
+                <i>{{workout.score}}</i>
+            <!-- <div>{{workout.content}}</div> -->
+        </li>
+    </ul>
+    <h1 data-ng-hide="!workouts || workouts.length">No workouts yet. <br> Why don't you <a href="/#!/workouts/create">Create One</a>?</h1>
+</section>

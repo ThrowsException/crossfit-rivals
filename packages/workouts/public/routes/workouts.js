@@ -40,15 +40,22 @@ angular.module('mean.workouts').config(['$stateProvider',
 	            resolve: {
 	                loggedin: checkLoggedin
 	            }
-        	}).
-        	state('my wods', {
+        	})
+            .state('my wods', {
             url: '/workouts/my_workouts',
 	            templateUrl: 'workouts/views/owned.html',
 	            resolve: {
 	                loggedin: checkLoggedin
 	            }
-        	}).
-            state('wod by id', {
+        	})
+            .state('completed wods', {
+            url: '/workouts/completed',
+                templateUrl: 'workouts/views/completed.html',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+            .state('wod by id', {
             url: '/workouts/:workoutId',
                 templateUrl: 'workouts/views/view.html',
                 resolve: {

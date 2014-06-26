@@ -21,6 +21,10 @@ module.exports = function(Workouts, app, auth, database) {
         .get(workouts.all)
         .post(workouts.create);
 
+    app.route('/completed')
+        .get(workouts.completed)
+        .post(workouts.post_completed);
+
     app.route('/workouts/:workoutId')
         .get(workouts.show)
         .delete(auth.requiresLogin, hasAuthorization, workouts.destroy);
