@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Global', 'Workouts',
-    function($scope, $stateParams, $location, Global, Workouts) {
+angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$modal', '$stateParams', '$location', 'Global', 'Workouts',
+    function($scope, $modal, $stateParams, $location, Global, Workouts) {
         $scope.global = Global;
         $scope.package = {
             name: 'workouts'
@@ -40,6 +40,12 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
             });
         };
 
+        $scope.completed = function() {
+            Workouts.getCompleted({}, function(workouts) {
+                $scope.workouts = workouts;
+            });
+        };
+
         $scope.remove = function(workout) {
             if (workout) {
                 workout.$remove();
@@ -57,7 +63,9 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
         };
 
         $scope.sections = [];
-
+        $scope.rx = {};
+        $scope.score = {};
+        
         $scope.addSection = function() {
         	var wodSection = {
         		items : []
@@ -78,5 +86,40 @@ angular.module('mean.workouts').controller('WorkoutsController', ['$scope', '$st
         $scope.removeItem = function(parentIndex, index) {
             $scope.sections[parentIndex].items.splice(index, 1);
         };
+
+        $scope.open = function(size) {
+            $modal.open({
+                templateUrl: 'myModal.html',
+                controller: ModalInstanceCtrl
+            })
+            .result.then(function(obj) { 
+                var wod = $scope.workout;
+                wod.user = wod.user._id;
+                delete wod._id;
+                delete wod.created;
+
+                Workouts.completed({wod: wod, rx: obj.rx, score: obj.score }, function(data) {
+                    $location.path('completed');
+                }); 
+
+            });
+        };
+
+        var ModalInstanceCtrl = function ($scope, $modalInstance) {
+            $scope.wo = {rx: true, score: ''};
+            $scope.ok = function () {
+                // Workouts.completed({wod: wod, rx: $scope.rx, score: $scope.score }, function(data) {
+                //     $location.path('completed');
+                // }); 
+                $modalInstance.close({rx: $scope.wo.rx, score: $scope.wo.score});
+            };
+
+            $scope.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        };
     }
 ]);
+
+
+

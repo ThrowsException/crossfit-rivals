@@ -35,6 +35,12 @@ Workouts.register(function(app, auth, database) {
         roles: ['authenticated'],
         menu: 'main'
     });
+    Workouts.menus.add({
+        title: 'Completed WODs',
+        link: 'completed wods',
+        roles: ['authenticated'],
+        menu: 'main'
+    });
 
     /**
     //Uncomment to use. Requires meanio@0.3.7 or above
