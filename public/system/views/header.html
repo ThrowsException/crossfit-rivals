@@ -16,13 +16,13 @@
     <div class="left pull-left">
       <ul class="navbar-nav nav">
         <li data-ng-repeat="item in menus.main" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-            <a mean-token="item.link" ui-sref='{{item.link}}'>{{item.title}}</a>
+            <a mean-token="item.link" ng-click="hide()" ui-sref='{{item.link}}'>{{item.title}}</a>
         </li>
         
         <!-- custom xs links when viewing on mobile-->
         <!-- <li class="visible-xs" ng-class="{active: $uiRoute}" data-ng-show="global.authenticated"><a>Profile</a></li> -->
         <li data-ng-show="global.authenticated" class="visible-xs" ng-class="{active: $uiRoute}" >
-          <a href="/logout" data-ng-show="global.authenticated">Logout</a>
+          <a href="/logout" ng-click="hide()" data-ng-show="global.authenticated">Logout</a>
         </li>
       </ul>
     </div>
