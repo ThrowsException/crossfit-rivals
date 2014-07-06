@@ -23,12 +23,12 @@ Workouts.register(function(app, auth, database) {
         roles: ['authenticated'],
         menu: 'main'
     });
-    Workouts.menus.add({
-        title: 'Community WODs',
-        link: 'all wods',
-        roles: ['authenticated'],
-        menu: 'main'
-    });
+    // Workouts.menus.add({
+    //     title: 'Community WODs',
+    //     link: 'all wods',
+    //     roles: ['authenticated'],
+    //     menu: 'main'
+    // });
     Workouts.menus.add({
         title: 'My WODs',
         link: 'my wods',
