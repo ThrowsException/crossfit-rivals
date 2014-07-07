@@ -4,8 +4,12 @@ module.exports = function(app) {
 
     // Home route
     var index = require('../controllers/index');
+    var auth = require('./middlewares/authorization');
 
     app.route('/')
-        .get(index.render);
+        .get(auth.requiresLogin, index.render);
+
+    app.route('/intro')
+        .get(index.landing);
 
 };
