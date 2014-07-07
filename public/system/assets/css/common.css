@@ -28,6 +28,7 @@
 }
 
 .transparent-grey {
+    background-color: black;
     background-color:rgba(0,0,0,0.75);
     height:370px;
     padding-left:12px;
@@ -45,7 +46,7 @@
     background-size: cover;
     color: #fff;
     background-color: #333;
-    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;*/
+    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
 }
 
 .fill-vert { 
