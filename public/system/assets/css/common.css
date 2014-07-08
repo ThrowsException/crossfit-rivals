@@ -54,6 +54,19 @@
     height: 100%;
 }
 
+.landing-footer {
+    text-align: center;
+    padding: 0px;
+    height: 200px;
+    background-color: black;
+    margin-top: -200px;
+}
+
+.landing-footer p {
+    padding: 0px;
+    background-color: black;
+}
+
 footer {
     position:fixed;
     left:0;
