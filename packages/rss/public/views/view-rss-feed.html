@@ -19,7 +19,7 @@
     	<accordion data-ng-repeat="item in feed.rss"> 
     	 	<accordion-group heading="{{item.pubDate | date}}">
     	 		{{item.link}}
-    	 		<p ng-bind-html="item.summary"></p>
+    	 		<p ng-bind-html="item.description"></p>
     	 	</accordion-group>
     	</accordion>
     </div>

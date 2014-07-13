@@ -84,6 +84,7 @@ function fetch(req,res) {
     var post;
     while (post = this.read()) {
     	//remove any img tags
+    	post.description = post.description.replace(/<img[^>]*>/g,"");
     	post.summary = post.summary.replace(/<img[^>]*>/g,"");
       	posts.push(post);
     }
