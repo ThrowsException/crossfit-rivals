@@ -78,14 +78,14 @@ function fetch(req,res) {
 
   feedparser.on('error', done);
   feedparser.on('end', function() {
-  	res.jsonp( {rss: req.rss})
+  	res.jsonp( {rss: req.rss});
   });
   feedparser.on('readable', function() {
     var post;
-    while (post = this.read()) {
+    while (null !== (post = this.read())) {
     	//remove any img tags
-    	post.description = post.description.replace(/<img[^>]*>/g,"");
-    	post.summary = post.summary.replace(/<img[^>]*>/g,"");
+    	post.description = post.description.replace(/<img[^>]*>/g,'');
+    	post.summary = post.summary.replace(/<img[^>]*>/g,'');
       	posts.push(post);
     }
     req.rss = posts;

@@ -78,7 +78,6 @@ exports.owned = function(req, res) {
 };
 
 exports.post_completed = function(req, res) {
-    console.log(req.body);
 
     var wod = new Wod(req.body.wod);
     wod.set('status', 'completed');
@@ -86,8 +85,6 @@ exports.post_completed = function(req, res) {
     wod.set('rx', req.body.rx);
     wod.set('type', req.body.type);
     wod.user = req.user;
-
-    console.log(wod);
 
     wod.save(function(err) {
         if (err) {

@@ -45,7 +45,7 @@ angular.module('mean.rss').controller('RssController', ['$scope', '$location', '
             .result.then(function(obj) { 
                 var wod = { title: new Date(workout.pubDate), user: $scope.global.user._id, notes: workout.description };
                 
-                Workouts.completed({wod: wod, rx: obj.rx, score: obj.score, type: "rss" }, function(data) {
+                Workouts.completed({wod: wod, rx: obj.rx, score: obj.score, type: 'rss' }, function(data) {
                     $location.path('completed');
                 });
 
