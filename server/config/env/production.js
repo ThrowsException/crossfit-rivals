@@ -3,12 +3,12 @@
 module.exports = {
     db: process.env.MONGOHQ_URL,
     app: {
-        name: 'Crossfit Rivals'
+        name: 'WOD Rivals'
     },
     facebook: {
         clientID: '620640598027615',
         clientSecret: '4b1af56e3c9282e115437b6759153546',
-        callbackURL: 'https://crossfit-rivals.herokuapp.com/auth/facebook/callback'
+        callbackURL: 'https://wod-rivals.herokuapp.com/auth/facebook/callback'
     },
     twitter: {
         clientID: 'CONSUMER_KEY',
