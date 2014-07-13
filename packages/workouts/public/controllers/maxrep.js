@@ -13,10 +13,6 @@ angular.module('mean.workouts').controller('MaxRepController', ['$scope', '$stat
             for (var i = 10; i <= 100; i+=5) {
                 $scope.weights.push({percent : i, weight5: round(($scope.test * (i/100)), 5).toFixed(), weight: ($scope.test * (i/100)).toFixed() });
             }
-
-            // for (var i = 55; i <= 100; i += 5) {
-            //     $scope.weights.push({percent : i, weight5: round(($scope.test * (i/10)), 5).toFixed(), weight: ($scope.test * (i/10)).toFixed() });
-            // }
          };
 
          function round(int, roundToNearest) {
