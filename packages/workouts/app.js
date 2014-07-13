@@ -21,7 +21,8 @@ Workouts.register(function(app, auth, database) {
         title: 'Create a WOD',
         link: 'create a wod',
         roles: ['authenticated'],
-        menu: 'main'
+        menu: 'main',
+        order: 1
     });
     // Workouts.menus.add({
     //     title: 'Community WODs',
@@ -33,19 +34,22 @@ Workouts.register(function(app, auth, database) {
         title: 'My WODs',
         link: 'my wods',
         roles: ['authenticated'],
-        menu: 'main'
+        menu: 'main',
+        order: 2
     });
     Workouts.menus.add({
         title: 'Completed WODs',
         link: 'completed wods',
         roles: ['authenticated'],
-        menu: 'main'
+        menu: 'main',
+        order: 3
     });
     Workouts.menus.add({
         title: '%MR Calculator',
         link: 'mr calculator',
         roles: ['authenticated'],
-        menu: 'main'
+        menu: 'main',
+        order: 4
     });
 
     /**
