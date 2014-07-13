@@ -20,6 +20,3 @@ angular.module('mean.workouts').controller('MaxRepController', ['$scope', '$stat
          }
     }
 ]);
-
-
-
