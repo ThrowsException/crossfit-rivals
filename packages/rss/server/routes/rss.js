@@ -1,7 +1,24 @@
 'use strict';
 
+var rss = require('../controllers/rss');
+
+// Article authorization helpers
+// var hasAuthorization = function(req, res, next) {
+//     if (!req.user.isAdmin && req.rss.user.id !== req.user.id) {
+//         return res.send(401, 'User is not authorized');
+//     }
+//     next();
+// };
+
 // The Package is past automatically as first parameter
 module.exports = function(Rss, app, auth, database) {
+
+    app.route('/rss')
+        .get(rss.all)
+        .post(rss.create);
+
+    app.route('/rss/:id')
+        .get(rss.show);
 
     app.get('/rss/example/anyone', function(req, res, next) {
         res.send('Anyone can access this');
@@ -23,4 +40,6 @@ module.exports = function(Rss, app, auth, database) {
             res.send(html);
         });
     });
+
+    app.param('id', rss.rss);
 };

@@ -7,6 +7,7 @@ var Module = require('meanio').Module;
 
 var Rss = new Module('rss');
 
+
 /*
  * All MEAN packages require registration
  * Dependency injection is used to define required modules
@@ -16,13 +17,15 @@ Rss.register(function(app, auth, database) {
     //We enable routing. By default the Package Object is passed to the routes
     Rss.routes(app, auth, database);
 
+    Rss.angularDependencies(['ngSanitize']);
+
     //We are adding a link to the main menu for all authenticated users
     Rss.menus.add({
-        title: 'rss example page',
-        link: 'rss example page',
+        title: 'RSS Feeds',
+        link: 'rss feeds',
         roles: ['authenticated'],
         menu: 'main',
-        order : 10
+        order : 5
     });
 
     /**
