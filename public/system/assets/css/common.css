@@ -55,7 +55,7 @@ html, body {
 }
 
 /* Wrapper for page content to push down footer */
-#wrap {
+.wrap {
     min-height: 100%;
     height: auto !important;
     /* Negative indent footer by it's height */
@@ -71,16 +71,16 @@ html, body {
 }
 
   /* Set the fixed height of the footer here */
-#push, #footer {
+.push, .landing-footer {
     height: 200px;
 }
-#footer {
+.landing-footer {
     background-color: #000;
 }
 
 /* Lastly, apply responsive CSS fixes as necessary */
 @media (max-width: 767px) {
-    #footer {
+    .landing-footer {
         margin-left: -20px;
         margin-right: -20px;
         padding-left: 20px;

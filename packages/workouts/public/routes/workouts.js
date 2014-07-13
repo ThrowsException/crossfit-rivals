@@ -61,6 +61,13 @@ angular.module('mean.workouts').config(['$stateProvider',
                 resolve: {
                     loggedin: checkLoggedin
                 }
+            })
+            .state('mr calculator', {
+            url: '/mrcalculator',
+                templateUrl: 'workouts/views/calculator.html',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             });
     }
 ]);
