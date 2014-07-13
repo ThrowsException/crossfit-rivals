@@ -3,7 +3,7 @@
 module.exports = {
     db: 'mongodb://localhost/crossfit-rivals',
     app: {
-        name: 'Crossfit Rivals'
+        name: 'Wod Rivals'
     },
     facebook: {
         clientID: 'APP_ID',

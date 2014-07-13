@@ -41,6 +41,12 @@ Workouts.register(function(app, auth, database) {
         roles: ['authenticated'],
         menu: 'main'
     });
+    Workouts.menus.add({
+        title: '%MR Calculator',
+        link: 'mr calculator',
+        roles: ['authenticated'],
+        menu: 'main'
+    });
 
     /**
     //Uncomment to use. Requires meanio@0.3.7 or above

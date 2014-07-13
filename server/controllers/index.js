@@ -47,5 +47,9 @@ exports.landing = function(req, res) {
     }
     
     // Send some basic starting info to the view
+    if(req.isAuthenticated()) {
+        return res.redirect('/');
+    }
+    
     res.render('landing');
 };
