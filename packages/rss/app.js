@@ -17,7 +17,7 @@ Rss.register(function(app, auth, database) {
     //We enable routing. By default the Package Object is passed to the routes
     Rss.routes(app, auth, database);
 
-    Rss.angularDependencies(['ngSanitize']);
+    Rss.angularDependencies(['ngSanitize', 'mean.workouts']);
 
     //We are adding a link to the main menu for all authenticated users
     Rss.menus.add({

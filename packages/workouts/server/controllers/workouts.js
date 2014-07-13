@@ -84,6 +84,7 @@ exports.post_completed = function(req, res) {
     wod.set('status', 'completed');
     wod.set('score', req.body.score);
     wod.set('rx', req.body.rx);
+    wod.set('type', req.body.type);
     wod.user = req.user;
 
     console.log(wod);

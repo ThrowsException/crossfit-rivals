@@ -4,7 +4,7 @@
             <!-- <span>{{workout.created | date:'medium'}}</span>  -->
             <!-- <span>{{workour.user.name}}</span> -->
             <h2>
-                <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title}}</a>
+                <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title | date}}</a>
                 <span data-ng-if="hasAuthorization(workout)">
                     <!-- <a class="btn" href="/#!/workouts/{{workout._id}}/edit">
                         <i class="glyphicon glyphicon-edit"></i>
