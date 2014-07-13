@@ -6,7 +6,7 @@
             <!-- <span>{{workout.created | date:'medium'}}</span>  -->
             <!-- <span>{{workour.user.name}}</span> -->
             <h2>
-                <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title}}</a>
+                <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title | date}}</a>
             </h2>
                 <label>Rx</label>
                 <i ng-show="workout.rx" class="glyphicon glyphicon-ok-circle"></i>

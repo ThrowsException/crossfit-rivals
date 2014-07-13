@@ -1,0 +1,36 @@
+<div class="" data-ng-controller="RssController" data-ng-init="find()">
+	<form name="rssForm" class="form-inline top-buffer" role="form" data-ng-submit="create()" novalidate>
+  		<div class="form-group" ng-class="{ 'has-error' : rssForm.name.$invalid && !rssForm.name.$pristine }">
+    		<label for="name">Name</label>
+   			<input type="text" class="form-control" data-ng-model="rss.name" id="name" name="name" placeholder="Name" ng-minlength="3" required>
+        <span ng-show="rssForm.name.$error.minlength" class="help-block">Name is too short.</span>
+  		</div>
+  		<div class="form-group" ng-class="{ 'has-error' : rssForm.url.$invalid && !rssForm.url.$pristine }">
+    		<label for="url">Url</label>
+   			<input type="text" class="form-control" id="url" name="url" data-ng-model="rss.url" placeholder="Enter Url" ng-minlength="3" required>
+        <span ng-show="rssForm.url.$error.minlength" class="help-block">Url is too short.</span>
+  		</div>
+  		<button type="submit" class="btn btn-default" ng-disabled="rssForm.$invalid">Add</button>
+  	</form>
+
+
+    <div>
+      <ul class="articles list-unstyled">
+        <li data-ng-repeat="item in rsses">
+           <!--  <span>{{item.created | date:'medium'}}</span> -->
+            <h2>
+                <a data-ng-href="#!/rss/{{item._id}}">{{item.name}}</a>
+                
+                <!-- <a class="btn" href="/#!/rss/{{item._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a> -->
+                <!-- <button class="btn" data-ng-click="remove(item);">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button> -->
+                
+            </h2>
+            
+        </li>
+      </ul>
+    </div>
+</div>

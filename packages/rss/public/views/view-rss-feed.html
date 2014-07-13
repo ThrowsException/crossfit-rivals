@@ -1,0 +1,34 @@
+<div class="" data-ng-controller="RssController" data-ng-init="findFeed()">
+    <div>
+    	<accordion data-ng-repeat="item in feed.rss"> 
+    	 	<accordion-group heading="{{item.pubDate | date}}">
+    	 		{{item.link}}
+    	 		<p ng-bind-html="item.description"></p>
+
+          <button type="button" class="btn btn-success" ng-click="open($index)">I Completed This W.O.D</button>
+    	 	</accordion-group>
+    	</accordion>
+    </div>
+
+    <!-- Modal -->
+    <script type="text/ng-template" id="myModal.html">
+        
+          <div class="modal-header">
+            <h3 class="modal-title">Great Job</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Score</label>
+                <input type="text" data-ng-model="wo.score"/>
+            </div>
+            <button type="button" ng-class="{'btn-success': wo.rx, 'btn-danger': !wo.rx, btn:true, 'btn-block': true}" class="btn" data-ng-model="wo.rx" btn-checkbox btn-checkbox-true=true btn-checkbox-false=false>
+                {{wo.rx ? "Rx" : "Non Rx"}}
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok('success')">OK</button>
+            <button class="btn" ng-click="cancel('cancel')">Cancel</button>
+        </div>
+        
+    </script>
+</div>
