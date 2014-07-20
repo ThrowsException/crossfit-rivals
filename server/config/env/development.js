@@ -3,7 +3,7 @@
 module.exports = {
     db: 'mongodb://localhost/crossfit-rivals',
     app: {
-        name: 'MEAN - FullStack JS - Development'
+        name: 'Wod Rivals'
     },
     facebook: {
         clientID: '622739847817690',

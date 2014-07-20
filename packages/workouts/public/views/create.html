@@ -8,12 +8,12 @@
             <label mean-token="'item-title'" for="title" class="col-md-1 control-label" >Title</label>
             <div class="col-md-11">
                 <input type="text" data-ng-model="title" id="title" name="title" placeholder="Title" class="form-control" ng-minlength="3" required></input>
-                <span ng-show="wod.title.$error.minlength" class="help-block">Username is too short.</span>
+                <span ng-show="wod.title.$error.minlength" class="help-block">Title is too short.</span>
             </div>
         </div>
         <div data-ng-repeat="section in sections">
             <div class="form-group">
-                <label mean-token="'item-type'" for="type" class="col-md-1 control-label">Title</label>
+                <label mean-token="'item-type'" for="type" class="col-md-1 control-label">Type</label>
                 <div class="col-md-8">
                     <select ng-model="section.type" class="form-control">
                         <option value="Rounds">Rounds</option>
@@ -23,24 +23,29 @@
                     </select>
                 </div>
                 <button type="button" class="btn btn-default" ng-click="addItem($index)">Add Item</button>
-                <button type="button" class="btn btn-default" ng-click="remove($index)">Remove Section</button>
+                <button type="button" class="btn btn-default" ng-click="removeSection($index)">Remove Section</button>
             </div>
             <div class="col-md-offset-1" data-ng-repeat="item in section.items" >
                 <div class="form-group">
                     <label mean-token="'item-name'" for="{{item.name}}" class="col-md-1 control-label">Name</label>
                     <div class="col-md-7">
-                        <input type="text" data-ng-model="item.name" id="{{item.name}}{{index}}" placeholder="Name" class="form-control" required></textarea>
+                        <input type="text" data-ng-model="item.name" id="{{item.name}}{{index}}" placeholder="Name" class="form-control" required>
                     </div>
                     <label mean-token="'item-weight'" for="{{item.weight}}" class="col-md-1 control-label">Weight</label>
-                    <div class="col-md-3">
-                        <input type="text" data-ng-model="item.weight" id="{{item.weight}}{{index}}" placeholder="Optional" class="form-control"></textarea>
+                    <div class="col-md-2">
+                        <input type="text" data-ng-model="item.weight" id="{{item.weight}}{{index}}" placeholder="Optional" class="form-control">
+                    </div>
+                    <div class="col-md-1">
+                        <a class="btn" ng-click="removeItem($parent.$index, $index);">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <label for="notes" class="control-label sr-only">Additional Notes</label>
-            <textarea id="notes" class="form-control" data-ng-model="notes" placeholder="Additional Notes" rows="3"></textarea>
+            <textarea id="notes" class="form-control" data-ng-model="notes" placeholder="Additional notes for things like scoring, time caps, and number of rounds" rows="3"></textarea>
         </div>
         <div class="form-group">
             <div class="col-md-9">

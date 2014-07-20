@@ -1,4 +1,6 @@
-<section data-ng-controller="WorkoutsController" data-ng-init="find()">
+<section data-ng-controller="WorkoutsController" data-ng-init="completed()">
+
+    <h1>Completed Wods</h1>
     <ul class="articles list-unstyled">
         <li data-ng-repeat="workout in workouts">
             <!-- <span>{{workout.created | date:'medium'}}</span>  -->
@@ -6,6 +8,11 @@
             <h2>
                 <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title | date}}</a>
             </h2>
+                <label>Rx</label>
+                <i ng-show="workout.rx" class="glyphicon glyphicon-ok-circle"></i>
+                <i ng-hide="workout.rx" class="glyphicon glyphicon-ban-circle"></i>
+                <label>Score</label>
+                <i>{{workout.score}}</i>
             <!-- <div>{{workout.content}}</div> -->
         </li>
     </ul>

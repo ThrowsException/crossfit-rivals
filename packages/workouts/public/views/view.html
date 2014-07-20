@@ -1,0 +1,58 @@
+<section data-ng-controller="WorkoutsController" data-ng-init="findOne()">
+    <span>{{workout.created | date:'medium'}}</span> /
+    <span>{{workout.user.name}}</span>
+    <h2>{{workout.title | date}}</h2>
+   <!--  <div data-ng-if="hasAuthorization(workout)">
+        <a class="btn" href="/#!/workouts/{{workout._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove(workout);">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div> -->
+    <div ng-hide="workout.type">
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Section</th>
+                    <th>Name</th>
+                    <th>Weight (opt.)</th>
+                </tr>
+            </thead>
+            <tbody data-ng-repeat="data in workout.wod">
+                <tr data-ng-repeat="item in data.items">
+                    <td ng-if="$index==0" rowspan="{{data.items.length}}">{{data.type}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.weight}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Notes</h3>
+        <p>{{workout.notes || "No Notes Entered For This WOD"}}</p>
+    </div>
+    <p ng-show="workout.type" ng-bind-html="workout.notes"></p>
+    
+    <button type="button" class="btn btn-success" ng-click="open()" ng-hide="workout.status === 'completed'">I Completed This W.O.D</button>
+
+    <!-- Modal -->
+    <script type="text/ng-template" id="myModal.html">
+        
+          <div class="modal-header">
+            <h3 class="modal-title">Great Job</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Score</label>
+                <input type="text" data-ng-model="wo.score"/>
+            </div>
+            <button type="button" ng-class="{'btn-success': wo.rx, 'btn-danger': !wo.rx, btn:true, 'btn-block': true}" class="btn" data-ng-model="wo.rx" btn-checkbox btn-checkbox-true=true btn-checkbox-false=false>
+                {{wo.rx ? "Rx" : "Non Rx"}}
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok('success')">OK</button>
+            <button class="btn" ng-click="cancel('cancel')">Cancel</button>
+        </div>
+        
+    </script>
+</section>

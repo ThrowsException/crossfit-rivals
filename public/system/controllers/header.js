@@ -22,7 +22,14 @@ angular.module('mean.system').controller('HeaderController', ['$scope', '$rootSc
         // Query server for menus and check permissions
         queryMenu('main', defaultMainMenu);
 
-        $scope.isCollapsed = false;
+        $scope.hide = function() {
+            var element = angular.element(document.querySelector('#bs-example-navbar-collapse-1'));
+            if(element.hasClass('in')) {
+                $scope.isCollapsed = true;
+            }
+        };
+
+        $scope.isCollapsed = true;
 
         $rootScope.$on('loggedin', function() {
 

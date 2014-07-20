@@ -21,19 +21,35 @@ Workouts.register(function(app, auth, database) {
         title: 'Create a WOD',
         link: 'create a wod',
         roles: ['authenticated'],
-        menu: 'main'
+        menu: 'main',
+        order: 1
     });
-    Workouts.menus.add({
-        title: 'View WODs',
-        link: 'all wods',
-        roles: ['authenticated'],
-        menu: 'main'
-    });
+    // Workouts.menus.add({
+    //     title: 'Community WODs',
+    //     link: 'all wods',
+    //     roles: ['authenticated'],
+    //     menu: 'main'
+    // });
     Workouts.menus.add({
         title: 'My WODs',
         link: 'my wods',
         roles: ['authenticated'],
-        menu: 'main'
+        menu: 'main',
+        order: 2
+    });
+    Workouts.menus.add({
+        title: 'Completed WODs',
+        link: 'completed wods',
+        roles: ['authenticated'],
+        menu: 'main',
+        order: 3
+    });
+    Workouts.menus.add({
+        title: '%MR Calculator',
+        link: 'mr calculator',
+        roles: ['authenticated'],
+        menu: 'main',
+        order: 4
     });
 
     /**

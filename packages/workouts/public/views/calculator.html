@@ -1,0 +1,29 @@
+<section data-ng-controller="MaxRepController">
+
+    <h1>Max Rep Calculator</h1>
+
+    <form class="form-inline" role="form">
+  		<div class="form-group">
+    		<label class="sr-only">Max Rep</label>
+    		<input type="number" class="form-control" data-ng-model="test" data-ng-change="calculate()" placeholder="Max Rep (lbs)">
+  		</div>
+  	</form>
+
+    <table id="mrtable" class="table table-striped">
+    	<thead>
+    		<tr>
+    			<th>% (Percent)</th>
+    			<th>Weight (Nearest 5 lbs)</th>
+    			<th>Weight (Precise)</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr data-ng-repeat="weight in weights">
+    			<td>{{weight.percent}}</td>
+    			<td>{{weight.weight5}}</td>
+    			<td>{{weight.weight}}</td>
+    		</tr>
+    	</tbody>
+    </table>
+    
+</section>

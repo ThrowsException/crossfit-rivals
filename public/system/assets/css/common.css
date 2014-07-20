@@ -6,15 +6,15 @@
 .page-header .navbar-nav {
     float: right;
 }
-.page-header>div>div, .page-header>div>ul {
+
+.page-header>div>div>div, .page-header>div>div>ul {
     display:inline-block;
 }
+
 .text-edit {
     padding: 13px 0 0 0;
 }
-.account {
-    text-align:right;
-}
+
 .account>div, .account>ul {
     text-align:left;
 }
@@ -26,6 +26,15 @@
     margin-top:70px;
     width:100%
 }
+
+.transparent-grey {
+    background-color: black;
+    background-color:rgba(0,0,0,0.75);
+    height:370px;
+    padding-left:12px;
+    padding-right:12px;
+}
+
 footer {
     position:fixed;
     left:0;
@@ -40,3 +49,43 @@ footer {
 footer p {
     padding:5px 0 12px 10px
 }
+
+html, body {
+    height: 100%;
+}
+
+/* Wrapper for page content to push down footer */
+.wrap {
+    min-height: 100%;
+    height: auto !important;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -200px;
+    background: url('/public/system/assets/img/background-blur.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #fff;
+    background-color: #333;
+    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+}
+
+  /* Set the fixed height of the footer here */
+.push, .landing-footer {
+    height: 200px;
+}
+.landing-footer {
+    background-color: #000;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+    .landing-footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+

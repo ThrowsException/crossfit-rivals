@@ -1,15 +1,15 @@
 <section data-ng-controller="WorkoutsController" data-ng-init="owned()">
-    <ul class="articles unstyled">
+    <ul class="articles list-unstyled">
         <li data-ng-repeat="workout in workouts">
-            <span>{{workout.created | date:'medium'}}</span> /
-            <span>{{workour.user.name}}</span>
+            <!-- <span>{{workout.created | date:'medium'}}</span>  -->
+            <!-- <span>{{workour.user.name}}</span> -->
             <h2>
-                <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title}}</a>
+                <a data-ng-href="#!/workouts/{{workout._id}}">{{workout.title | date}}</a>
                 <span data-ng-if="hasAuthorization(workout)">
-                    <a class="btn" href="/#!/workouts/{{workout._id}}/edit">
+                    <!-- <a class="btn" href="/#!/workouts/{{workout._id}}/edit">
                         <i class="glyphicon glyphicon-edit"></i>
-                    </a>
-                    <a class="btn" data-ng-click="remove(workout);">
+                    </a> -->
+                    <a class="btn" ng-click="remove(workout);">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
                 </span>
