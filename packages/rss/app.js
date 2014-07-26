@@ -25,7 +25,7 @@ Rss.register(function(app, auth, database) {
         link: 'rss feeds',
         roles: ['authenticated'],
         menu: 'main',
-        order : 5
+        order : 6
     });
 
     /**

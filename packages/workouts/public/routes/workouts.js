@@ -68,6 +68,13 @@ angular.module('mean.workouts').config(['$stateProvider',
                 resolve: {
                     loggedin: checkLoggedin
                 }
+            })
+            .state('prs', {
+            url: '/prs',
+                templateUrl: 'workouts/views/prs.html',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             });
     }
 ]);
