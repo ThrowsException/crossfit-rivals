@@ -1,0 +1,35 @@
+<div class="" data-ng-controller="PrController" data-ng-init="find()">
+	<form name="prsForm" class="form-inline top-buffer" role="form" data-ng-submit="create()" novalidate>
+  		<div class="form-group" ng-class="{ 'has-error' : prsForm.name.$invalid && !prsForm.name.$pristine }">
+    		<label for="name">Name</label>
+   			<input type="text" class="form-control" data-ng-model="prs.name" id="name" name="name" placeholder="Name" ng-minlength="1" required>
+        <span ng-show="prsForm.name.$error.minlength" class="help-block">Name is too short.</span>
+  		</div>
+  		<div class="form-group" ng-class="{ 'has-error' : prsForm.record.$invalid && !prsForm.record.$pristine }">
+    		<label for="record">Record</label>
+   			<input type="text" class="form-control" id="record" name="record" data-ng-model="prs.record" placeholder="Enter record" ng-minlength="1" required>
+        <span ng-show="prsForm.record.$error.minlength" class="help-block">Record is too short.</span>
+  		</div>
+  		<button type="submit" class="btn btn-default" ng-disabled="prsForm.$invalid">Add</button>
+  	</form>
+
+
+    <div>
+       <table id="mrtable" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Record</th>
+            <th>On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="pr in prses">
+            <td>{{pr.name}}</td>
+            <td>{{pr.record}}</td>
+            <td>{{pr.created | date}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
