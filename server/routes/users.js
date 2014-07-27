@@ -95,4 +95,11 @@ module.exports = function(app, passport) {
             failureRedirect: '#!/login'
         }), users.authCallback);
 
+    app.get('/auth/facebook/token',
+        passport.authenticate('facebook-token'),
+        function (req, res) {
+            // do something with req.user
+            res.send(req.user? { Hello : 'World'} : 402);
+        }
+    );
 };

@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
     GitHubStrategy = require('passport-github').Strategy,
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
     LinkedinStrategy = require('passport-linkedin').Strategy,
+    FacebookTokenStrategy = require('passport-facebook-token').Strategy,
     User = mongoose.model('User'),
     config = require('./config');
 
@@ -202,5 +203,19 @@ module.exports = function(passport) {
                 }
             });
         }
+    ));
+    
+    passport.use(new FacebookTokenStrategy({
+        clientID: config.facebook.clientID,
+        clientSecret: config.facebook.clientSecret,
+      },
+      function(accessToken, refreshToken, profile, done) {
+        console.log(profile);
+        User.findOne({ 'facebook.id': profile.id }, function (err, user) {
+            console.log(err);
+            console.log(user);
+          return done(err, user);
+        });
+      }
     ));
 };
