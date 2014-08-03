@@ -210,12 +210,28 @@ module.exports = function(passport) {
         clientSecret: config.facebook.clientSecret,
       },
       function(accessToken, refreshToken, profile, done) {
-        console.log(profile);
-        User.findOne({ 'facebook.id': profile.id }, function (err, user) {
-            console.log(err);
-            console.log(user);
-          return done(err, user);
-        });
-      }
+            User.findOne({
+                'facebook.id': profile.id
+            }, function(err, user) {
+                if (err) {
+                    return done(err);
+                }
+                if (!user) {
+                    user = new User({
+                        name: profile.displayName,
+                        email: profile.emails[0].value,
+                        username: profile.username || profile.emails[0].value.split('@')[0],
+                        provider: 'facebook',
+                        facebook: profile._json
+                    });
+                    user.save(function(err) {
+                        if (err) console.log(err);
+                        return done(err, user);
+                    });
+                } else {
+                    return done(err, user);
+                }
+            });
+        }
     ));
 };
