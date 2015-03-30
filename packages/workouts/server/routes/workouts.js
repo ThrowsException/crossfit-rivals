@@ -1,6 +1,7 @@
 'use strict';
 
 var workouts = require('../controllers/workouts');
+var passport = require('passport');
 
 // Article authorization helpers
 var hasAuthorization = function(req, res, next) {
@@ -48,6 +49,16 @@ module.exports = function(Workouts, app, auth, database) {
             res.send(html);
         });
     });
+
+    app.route('/api/workouts')
+        .get(passport.authenticate('facebook-token'), workouts.all)
+        .post(workouts.create);
+
+    app.route('/api/completed')
+        .get(passport.authenticate('facebook-token'), workouts.completed)
+        .post(workouts.post_completed);
+
+
 
     app.param('workoutId', workouts.workout);
 };

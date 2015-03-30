@@ -99,7 +99,7 @@ module.exports = function(app, passport) {
         passport.authenticate('facebook-token'),
         function (req, res) {
             // do something with req.user
-            res.send(req.user? { Hello : 'World'} : 402);
+            res.send(req.user? { Hello : 'World'} : 401);
         }
     );
 };

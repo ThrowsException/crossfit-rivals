@@ -93,6 +93,7 @@ module.exports = function(passport) {
             callbackURL: config.facebook.callbackURL
         },
         function(accessToken, refreshToken, profile, done) {
+            console.log('Facebook ' + accessToken);
             User.findOne({
                 'facebook.id': profile.id
             }, function(err, user) {
@@ -210,6 +211,7 @@ module.exports = function(passport) {
         clientSecret: config.facebook.clientSecret,
       },
       function(accessToken, refreshToken, profile, done) {
+            console.log('Token ' + accessToken);
             User.findOne({
                 'facebook.id': profile.id
             }, function(err, user) {
